@@ -1,41 +1,18 @@
 const Employee = require('./lib/Employee');
-const Manager = require('./lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
+const { Manager, managerInfo } = require('./lib/Manager');
+const { Engineer, engineerInfo } = require('./lib/Engineer');
+const { Intern, internInfo } = require('./lib/Intern');
 const html = require('./src/page-template');
 const fs = require('fs');
 const inquirer = require('inquirer');
 let team = [];
 
 managerQs = () => {
-
     inquirer
-        .prompt([
-            {
-                type: 'input',
-                message: "What is the Manager's name?",
-                name: 'name'
-            },
-            {
-                type: 'input',
-                message: "What is the Manager's Employee ID?",
-                name: 'id'
-            },
-            {
-                type: 'input',
-                message: "What is the Manager's email?",
-                name: 'email'
-            },
-            {
-                type: 'input',
-                message: "What is the Manager's Office Number?",
-                name: 'office'
-            },
-        ])
+        .prompt(managerInfo)
         .then(({ name, id, email, office }) =>
             {
                 team.push(new Manager(name, id, email, office));
-                // console.log(team);
                 addChoice();
             });
 };
@@ -63,67 +40,21 @@ addChoice = () => {
 };
 
 engineerQs = () => {
-
     inquirer
-        .prompt([
-            {
-                type: 'input',
-                message: "What is the Engineer's name?",
-                name: 'name'
-            },
-            {
-                type: 'input',
-                message: "What is the Engineer's Employee ID?",
-                name: 'id'
-            },
-            {
-                type: 'input',
-                message: "What is the Engineer's email?",
-                name: 'email'
-            },
-            {
-                type: 'input',
-                message: "What is the Engineer's GitHub username?",
-                name: 'github'
-            },
-        ])
+        .prompt(engineerInfo)
         .then(({ name, id, email, github }) =>
             {
                 team.push(new Engineer(name, id, email, github));
-                // console.log(team);
                 addChoice();
             });
 };
 
 internQs = () => {
-
     inquirer
-        .prompt([
-            {
-                type: 'input',
-                message: "What is the Intern's name?",
-                name: 'name'
-            },
-            {
-                type: 'input',
-                message: "What is the Intern's Employee ID?",
-                name: 'id'
-            },
-            {
-                type: 'input',
-                message: "What is the Intern's email?",
-                name: 'email'
-            },
-            {
-                type: 'input',
-                message: "What school does the Intern's attend?",
-                name: 'school'
-            },
-        ])
+        .prompt(internInfo)
         .then(({ name, id, email, school }) =>
             {
                 team.push(new Intern(name, id, email, school));
-                // console.log(team);
                 addChoice();
             });
 };
