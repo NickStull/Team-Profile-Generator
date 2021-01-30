@@ -1,4 +1,4 @@
-const Employee = require('./lib/Employee');
+const { nextEntry } = require('./lib/Employee');
 const { Manager, managerInfo } = require('./lib/Manager');
 const { Engineer, engineerInfo } = require('./lib/Engineer');
 const { Intern, internInfo } = require('./lib/Intern');
@@ -19,14 +19,7 @@ managerQs = () => {
 
 addChoice = () => {
     inquirer
-        .prompt([
-            {
-                type: 'list',
-                message: "Which role would you like add next?",
-                choices: ["Engineer", "Intern", "I'm finished"],
-                name: 'choice'
-            },
-        ])
+        .prompt(nextEntry)
         .then(({ choice }) =>
             {
                 switch (choice) {
