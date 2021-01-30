@@ -5,7 +5,7 @@ const { Intern, internInfo } = require('./lib/Intern');
 const html = require('./src/page-template');
 const fs = require('fs');
 const inquirer = require('inquirer');
-let team = [];
+const team = [];
 
 managerQs = () => {
     inquirer
@@ -28,15 +28,15 @@ addChoice = () => {
             },
         ])
         .then(({ choice }) =>
-        {
-            switch (choice) {
-                case "Engineer": engineerQs();
-                    break;
-                case "Intern": internQs();
-                    break;
-                default: buildHTML();
-            }
-        });
+            {
+                switch (choice) {
+                    case "Engineer": engineerQs();
+                        break;
+                    case "Intern": internQs();
+                        break;
+                    default: buildHTML();
+                }
+            });
 };
 
 engineerQs = () => {
