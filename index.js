@@ -53,7 +53,7 @@ internQs = () => {
 };
 
 buildHTML = () => {
-    fs.writeFile("index.html", html(team), err => err ? console.error(err) : console.log("Generating HTML..."));
+    fs.writeFile("./generated/index.html", html(team), err => err ? console.error(err) : console.log("Generating HTML..."));
 };
 
 managerQs();
